@@ -12,6 +12,30 @@ Task List :
 
 ## Progress
 
+Logon
+
+```raw 
+POST https://skyidapp.sky.com/signin/service/skycom HTTP/1.1
+Host: skyidapp.sky.com
+Connection: keep-alive
+Content-Length: 134
+sec-ch-ua: "Chromium";v="91", " Not;A Brand";v="99"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Origin: https://www.sky.com
+Sec-Fetch-Site: same-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://www.sky.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,en-GB;q=0.9
+Cookie: [GENERATED ON LOGON]
+userIdentifier=[SKY EMAIL]&password=[SKY PASSWORD]&rememberMe=false&forgotUsername=&submitButton=&signUp=&privacyNotice=
+```
+
+Applying 1GB of data to account (Account contained in the cookies?)
 ```raw 
 POST / HTTP/1.1
 Host: skyport.sky.com
