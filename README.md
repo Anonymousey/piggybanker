@@ -130,7 +130,9 @@ That's probably the way I'm going to do it.
 
 ## Usage
 
-* account=[number]
+* account=[number] (this might be the serviceInstanceIdentifier if no auth is required)
+* username=[sky email] (if required)
+* password=[sky pass] (if required)
 * datagb=[X]
 * sms=[0,1] 
 
