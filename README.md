@@ -35,7 +35,7 @@ Cookie: [GENERATED ON LOGON]
 userIdentifier=[SKY EMAIL]&password=[SKY PASSWORD]&rememberMe=false&forgotUsername=&submitButton=&signUp=&privacyNotice=
 ```
 
-(Account contained in the cookies?) this request might be used to ask for your account information.
+(Account contained in the cookies?) this request might be used to ask for your account information to do with the piggybank. I'm not entirely sure what's going on here. Looks a mess.
 ```raw 
 POST / HTTP/1.1
 Host: skyport.sky.com
@@ -66,6 +66,8 @@ Cookie: [GENERATED ON LOGIN]
 
 This might be how the 1GB data is applied to an account.
 
+**REQUEST HEADERS**
+
 ```raw
 POST https://skyport.sky.com/ HTTP/1.1
 Host: skyport.sky.com
@@ -89,30 +91,49 @@ Accept-Encoding: gzip, deflate, br
 Cookie: [COOKIE PROBABLY GENERATED ON LOGON]
 ```
 
-REQUEST IN JSON
+**REQUEST IN JSON**
 ```json
 [{"operationName":"OrderMobileProduct","variables":{"complete":true,"multiple":1,"productId":"14309","serviceInstanceIdentifier":"[SEE COMMENT BELOW]"},"query":"mutation OrderMobileProduct($complete: Boolean!, $multiple: Int!, $productId: String!, $serviceInstanceIdentifier: String!) {\n  orderMobileProduct(completeOrder: $complete, multiple: $multiple, productId: $productId, serviceInstanceIdentifier: $serviceInstanceIdentifier) {\n    orderReference\n    __typename\n  }\n}\n"}]
 ```
 
-serviceInstanceIdentifier =  This is a 23 digit number. might be an account ID or related to your own personal piggybank ID (if such a thing exists)
+* complete = **true** (Go ahead with the request? What does false do?)
+* productId = **14309** (I am going to assume this is the "Piggybank Service" other ids probably exist for different order requests.. like ordering a new phone? hmm.)
+* multiple = **1** (How many GB's you want to apply. I wonder how the server would respond to 0.5 or above your actual allowed balance)
+* serviceInstanceIdentifier =  **This is a 23 digit number.** might be an account ID or related to your own personal piggybank ID (if such a thing exists. I need to investigate as to what this serviceInstanceIdentifier actually is.)
 
-Possible security flaw. May not require Authentication to complete the above request as long as you know the serviceInstanceIdentifier. Will investigate.
+May not require Authentication to complete the above request as long as you know the serviceInstanceIdentifier. Will investigate.
 
-RESPONCE IN JSON
+**RESPONCE IN JSON**
 
 ```json
 [{"data":{"orderMobileProduct":{"orderReference":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","__typename":"MobileProductOrderType"}}}]
 ```                                                   
 The request seems to complete with an orderReference number. Perhaps this is used by customer services to look up a transaction internally.
 
+## Requirements
+
+This is intended to be used on a Server but can be used client side as well. 
+
+* **Windows 10 or 11 (windows subsystem for linux) with required packages**
+* **Linux based system with the required packages**
+
+Packages :
+
+* Cron
+* CURL
+* Python or Bash
 
 ## How It Works
 
-Not complete yet.
+You will need to setup a cronjob with your desired month pointing at a script like ./piggybanker.py or piggybanker.sh
+That's probably the way I'm going to do it. 
 
 ## Usage
 
-Not complete yet.
+* account=[number]
+* datagb=[X]
+* sms=[0,1] 
+
 
 [Website]: 
 [Contact Info]: 
