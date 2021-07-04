@@ -89,7 +89,7 @@ Accept-Encoding: gzip, deflate, br
 Cookie: [COOKIE PROBABLY GENERATED ON LOGON]
 ```
 
-JSON
+REQUEST IN JSON
 ```json
 [{"operationName":"OrderMobileProduct","variables":{"complete":true,"multiple":1,"productId":"14309","serviceInstanceIdentifier":"[SEE COMMENT BELOW]"},"query":"mutation OrderMobileProduct($complete: Boolean!, $multiple: Int!, $productId: String!, $serviceInstanceIdentifier: String!) {\n  orderMobileProduct(completeOrder: $complete, multiple: $multiple, productId: $productId, serviceInstanceIdentifier: $serviceInstanceIdentifier) {\n    orderReference\n    __typename\n  }\n}\n"}]
 ```
