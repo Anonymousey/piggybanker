@@ -81,7 +81,7 @@ content-type: application/json
 accept: */*, application/json
 Sky-Sales-Version: 2
 Sky-Domain: mobile-service
-x-api-token: be4e7130-7a20-0137-0000-3ee5354efa8f
+x-api-token: [GENERATED ON LOGIN?]
 Origin: https://www.sky.com
 Sec-Fetch-Site: same-site
 Sec-Fetch-Mode: cors
